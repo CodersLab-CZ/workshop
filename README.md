@@ -3,3 +3,4 @@ udelej ukoly podle zadani workshopu ktera jsou na webu https://lms.coderslab.cz/
 kazdy ukol do nove slozky
 
 
+
