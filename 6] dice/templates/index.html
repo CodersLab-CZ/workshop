@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>2001 Game</title>
+      {% include 'styles.css' %} 
+   </head>
+   <body>
+      <h1>2001 Game</h1>
+      <div id="scores">
+         <p>Human score: {{ score_human }}</p>
+         <p>Computer score: {{ score_computer }}</p>
+      </div>
+      {% if score_human >= 2001 %}
+      <h3>You won!</h3>
+      <form method="get">
+         <button type="submit" name="start">Play again!</button>
+      </form>
+      {% elif score_computer >= 2001 %}  
+      <h3>You lost!</h3>
+      </form>
+      <form method="get">
+         <button type="submit">Play again!</button>
+      </form>
+      {% else %}
+      <script>
+         document.addEventListener("keyup", function(event) {
+           if (event.keyCode === 13) {
+             document.getElementById("playButton").click(); 
+           }
+         });  
+         </script>
+      <form method="post">
+         <label for="firstDice">Choose your first dice:</label>
+         <select id="firstDice" name="firstDice" required>
+            <option value="">Select dice</option>
+            <option value="3">D3</option>
+            <option value="4">D4</option>
+            <option value="6" selected>D6</option>
+            <option value="8">D8</option>
+            <option value="10">D10</option>
+            <option value="12">D12</option>
+            <option value="20">D20</option>
+            <option value="100">D100</option>
+         </select>
+         <label for="secondDice">Choose your second dice:</label>
+         <select id="secondDice" name="secondDice" required>
+            <option value="">Select dice</option>
+            <option value="3">D3</option>
+            <option value="4">D4</option>
+            <option value="6" selected>D6</option>
+            <option value="8">D8</option>
+            <option value="10">D10</option>
+            <option value="12">D12</option>
+            <option value="20">D20</option>
+            <option value="100">D100</option>
+         </select>
+         <input type="hidden" name="score_human" value={{ score_human }}>
+         <input type="hidden" name="score_computer" value={{ score_computer }}>
+         <button id="playButton" type="submit">Play!</button>
+      </form>
+      {% endif %}
+   </body>
+</html>
