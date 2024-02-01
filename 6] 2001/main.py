@@ -1,0 +1,1 @@
+nedelal jsem nebyl cas
