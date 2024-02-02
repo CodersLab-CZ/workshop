@@ -4,17 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guessing GAME</title>
+    <style>
+        button {
+            margin: 25px auto;
+            min-width: 300px;
+            min-height: 45px;
+            font-size: 25px;
+        }
+        .box {
+            text-align: center;
+            margin: 50px auto;
+        }
+        .rules {
+            font-style: italic;
+        }
+    </style>
 </head>
 <body>
-    <h1>LET'S PLAY A GUESSING GAME!</h1>
+    <div class="box">
+        <h1>LET'S PLAY A GUESSING GAME!</h1>
 
-    <p>PRAVIDLA: Mysli na číslo od 0 do 1000. Pak mi řekni, jestli jsem číslo
-        uhodnul nebo jestli je moje číslo příliš nízké nebo příliš vysoké.
-    </p>
+        <p class="rules">RULES: Think about a number in the range 
+            0 - 1000. <br> Then say me, if my guess is right, too 
+            high or too low.</p>
 
-    <form action="/", method="POST">
-        <button type="submit">START TO PLAY</button>
-    </form>
-    
+        <form action="/", method="POST">
+            <button type="submit">START TO PLAY</button>
+        </form>
+    </div>
 </body>
 </html>

@@ -4,16 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guessing GAME</title>
+    <style>
+        button {
+            margin: 10px auto;
+            min-width: 150px;
+            min-height: 35px;
+            font-size: 17px;
+        }
+        .box {
+            text-align: center;
+            margin: 50px auto;
+        }
+    </style>
 </head>
 <body>
-    <h1>Yeah! I WIN!</h1>
+    <div class="box">
+        <h1>Yeah! I WIN!</h1>
 
-    <p>Thank you for a game! Do you want to play again?
-    </p>
+        <p>Thank you for a game! Do you want to play again?
+        </p>
 
-    <form action="/", method="GET">
-        <button name="play_again">YES</button>
-    </form>
-    
+        <form action="/", method="GET">
+            <button name="play_again">YES</button>
+        </form>
+    </div>
 </body>
 </html>
