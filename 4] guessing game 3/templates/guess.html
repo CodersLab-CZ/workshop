@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Number Guessing Game</title>
+</head>
+<body>
+    <h1>Number Guessing Game</h1>
+    <p>Think about a number from 0 to 1000 and let me guess it!</p>
+    <p>Guessing: {{ guess }}</p>
+    <form method="POST">
+        <input type="hidden" name="min" value="{{ min }}">
+        <input type="hidden" name="max" value="{{ max }}">
+        <input type="hidden" name="count" value="{{ count }}">
+        <input type="hidden" name="answer" value="2">
+        <input type="submit" value="Too big">
+    </form>
+    <form method="POST">
+        <input type="hidden" name="min" value="{{ min }}">
+        <input type="hidden" name="max" value="{{ max }}">
+        <input type="hidden" name="count" value="{{ count }}">
+        <input type="hidden" name="answer" value="1">
+        <input type="submit" value="Too small">
+    </form>
+    <form method="POST">
+        <input type="hidden" name="min" value="{{ min }}">
+        <input type="hidden" name="max" value="{{ max }}">
+        <input type="hidden" name="count" value="{{ count }}">
+        <input type="hidden" name="answer" value="3">
+        <input type="submit" value="You win">
+    </form>
+</body>
+</html>
