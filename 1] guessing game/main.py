@@ -17,7 +17,7 @@ def game():
             print("Too big!")
         else:
             print("You win!")
-            break
+            return
 
 
 if __name__ == '__main__':
