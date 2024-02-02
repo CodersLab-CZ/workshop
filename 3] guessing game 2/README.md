@@ -1,11 +1,11 @@
-## GUESSING GAME
+## Number guessing game 2
 
-Symple console application LOTTO simulator. 
+A simple console application that guesses a player's number in the range of 1-1000.
 
 
 # Lauched application
 
-Use the "cd" command to navigate to the "2] loto" folder and enter the command:
+Use the "cd" command to navigate to the "3] guessing game 2" folder and enter the command:
 
 for LINUX
     python3 main.py
@@ -16,10 +16,8 @@ for WINDOWS
 
 # Running application
 
-1. The function gets the list numbers from a player and while checks:
-- whether the string entered is a valid number,
-- whether the user has not entered a given number before,
-- if the number is in the range of 1-49.
-2. The function uses randint (Random library) and gets a list of six original numbers from the range 1-49.
-3. The function dislays list of numbers from player and list of winning numbers and then compares them.
-4. The function displays how many numbers the player guessed.
+1. The function greets a player and uses a math formula for getting most likely numbers in the range 0 - 1000. 
+
+2. Then the function finds, if is the number correct, too hight or too low. If the quessed number is not correct, the function change numbers for calculation and repeats the process.
+
+3. This process is repeat only ten times, because if is it not enought, the game is not fair.

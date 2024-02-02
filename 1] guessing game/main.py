@@ -3,11 +3,11 @@ from random import randint
 
 def num_guessing_game() -> int:
     """
-    The function of guessing a random number between 1 and 100.
-
-    The function using randint will generate a number, and using
-    while loop accepts number tips from the user. once
-    the user guesses the number, the program ends.
+    The function uses randint() and generates a number in
+    the range 1-100. Then it uses "while loop" and it gets
+    number tip from the player. The functions says the player
+    if is his tip higher or lower until the player guesses 
+    the number. 
     """
     print("Welcome to our guessing game! "
           "Can you guess the number between 1 and 100?")

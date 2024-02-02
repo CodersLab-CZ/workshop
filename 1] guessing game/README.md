@@ -1,6 +1,6 @@
 ## GUESSING GAME
 
-Symple console application for guessing numbers. 
+Symple console application for guessing random number in the range 1-100. 
 
 
 # Lauched application
@@ -16,8 +16,8 @@ for WINDOWS
 
 # Running application
 
-The application generates a random number between 1 and 100. The player tries to guess this number.
+1. The application generates a random number between 1 and 100. 
 
-The application prompts the user to enter an integer. If the player enters letters or floats, the app will ask them to correct it. If the entered number is higher or lower than the selected number, the application will alert the player. When the player guesses the number, the app will tell them and the program will exit.
+2. The player tries to guess this number. The application prompts if the player to enter an integer. If the player enters letters or floats, the app asks them to correct it. If the entered number is higher or lower than the selected number, the application alerts the player. If the player guesses the number, the app will tell them and the game is ending.
 
-If the player wants to quit the application during the game, he can use "CTRL+C".
+3. If the player wants to quit the application during the game, he can to use keyboard "CTRL+C".

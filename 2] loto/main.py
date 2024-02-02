@@ -3,11 +3,11 @@ from random import randint
 
 def nums_of_player() -> list:
     """
-    The function retrieves a list of six original numbers
-    from the player.
+    The function gets a list of six original numbers
+    of the player.
 
     Funktion checks whether:
-        player entered integer in range of 1-49,
+        player entered integer in the range 1-49,
         player has not entered a given number before.
 
     Funktion return a sorted list of numbers.
@@ -34,8 +34,8 @@ def nums_of_player() -> list:
 
 def winning_nums() -> list:
     """
-    The function uses randint (Random library) and gets a list 
-    of six original numbers from the range 1-49.
+    The function uses randint() and gets a list 
+    of six original numbers in the range 1-49.
     """
     draw_nums = []
     while len(draw_nums) < 6:
@@ -46,10 +46,10 @@ def winning_nums() -> list:
 
 def main():
     """
-    The function uses the "nums_of_player()" function and gets the list
-    numbers from a player. Then uses the "winning_nums()" function and gets
-    list of drawn numbers. 
-    The function dislays lists of numbers and compares them. Then
+    The function uses the "nums_of_player()" function and it gets the list
+    numbers from a player. Then it uses the "winning_nums()" function and 
+    it gets list of winning numbers. 
+    The function dislays these lists of numbers and compares them. Then it
     displays how many numbers the player guessed.
     """
     print(f"WELCOME TO THE PYTHON LOTTERY!\n{'=' * 30}\nWe draw "
