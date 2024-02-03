@@ -1,7 +1,7 @@
 from random import randint
 
 
-def nums_of_player() -> list:
+def nums_of_player() -> set:
     """
     The function gets a list of six original numbers
     of the player.
@@ -13,7 +13,7 @@ def nums_of_player() -> list:
     Funktion return a sorted list of numbers.
     """
     # gettint a list of numbers
-    player_nums = []
+    player_nums = set()
     while len(player_nums)<6:
         try:
             num = int(input(f"Enter number No. {len(player_nums) +1}: "))
@@ -23,23 +23,22 @@ def nums_of_player() -> list:
             elif num < 1 or num > 49:
                 print("The number is not in range of 1 - 49. Try again...")
             else:
-                player_nums.append(num)
+                player_nums.add(num)
 
         except ValueError:
             print("Value is not whole number. Try again...")
     
-    player_nums.sort()
     return player_nums
 
 
-def winning_nums() -> list:
+def winning_nums() -> set:
     """
     The function uses randint() and gets a list 
     of six original numbers in the range 1-49.
     """
-    draw_nums = []
+    draw_nums = set()
     while len(draw_nums) < 6:
-        draw_nums.append(randint(1, 50))
+        draw_nums.add(randint(1, 50))
 
     return draw_nums
 
@@ -64,12 +63,9 @@ def main():
     print(f"Winning numbers:\n{', '.join(map(str, draw_nums))}")
 
     # evaluation of results
-    hits = 0
-    for num in player_nums:
-        if num in draw_nums:
-            hits += 1
+    hits = draw_nums.intersection(player_nums)
     separator = "=" * 25
-    print(f"{separator}\nSUM OF GUESSED NUMBERS: {hits}\n{separator}")
+    print(f"{separator}\nSUM OF GUESSED NUMBERS: {len(hits)}\n{separator}")
 
 
 main()

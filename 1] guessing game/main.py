@@ -1,7 +1,7 @@
 from random import randint
 
 
-def num_guessing_game() -> int:
+def num_guessing_game():
     """
     The function uses randint() and generates a number in
     the range 1-100. Then it uses "while loop" and it gets
@@ -20,19 +20,22 @@ def num_guessing_game() -> int:
         try:
             player_num = int(input("Enter whole number: "))
 
-            # testing a player's number
-            if player_num < wanted_num:
-                print("Too small number...")
-                continue
-            elif player_num > wanted_num:
-                print("Too big number...")
-                continue
-            else: 
-                return "!!! YOU WIN !!!"
-
         # wrong value entery check    
         except ValueError:
             print("You entered the wrong value, try again...")
+            continue
+
+        # testing a player's number
+        if player_num < wanted_num:
+            print("Too small number...")
+            continue
+        elif player_num > wanted_num:
+            print("Too big number...")
+            continue
+        else: 
+            return "!!! YOU WIN !!!"
+
+
 
 
 print(num_guessing_game())
