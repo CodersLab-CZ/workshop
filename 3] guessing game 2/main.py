@@ -42,7 +42,7 @@ def main():
 
     while num_of_tries:
         # calculation of the quessed number
-        guess = int((max-min) / 2) + min
+        guess = (max-min) // 2 + min
         print(f"Guessing: {guess}. Am I right?")
         print(f"Pokus {num_of_tries}")
 
