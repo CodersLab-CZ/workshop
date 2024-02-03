@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Guessing game</title>
+</head>
+<body>
+<p>Think about a number from 0 to 1000, and let me guess it!</p>
+<p>My tip is : {{guess}}</p>
+<form action="/" method="POST">
+    <button type="submit" name="guess_button" value="too low">too low</button>
+    <button type="submit" name="guess_button" value="too high">too high</button>
+    <button type="submit" name="guess_button" value="you guessed">you guessed</button>
+    <input type="hidden" id="min" name="min" value={{min}}>
+    <input type="hidden" id="max" name="max" value={{max}}>
+    <input type="hidden" id="round" name="round" value={{round}}>
+</form>
+
+</body>
+</html>
