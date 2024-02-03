@@ -1,6 +1,10 @@
 ## Number guessing game 2
 
-A simple console application ...
+Aplikace pro výpočet hodu kostkou ve formátu xDy+z kde:
+x = počet hodů kostkou (nepovinné)
+D = sympol pro označení druhu kostky (povinné)
+y = označení kolikastěnná je kostka (povinné)
++z = modifikátor, který označí matematickou operaci, která se má s výsledkem hodu provést - povoleno je +, -, *, / (nepovinné)
 
 
 # Lauched application
@@ -16,8 +20,8 @@ for WINDOWS
 
 # Running application
 
-1. ...
+1. Fukce přijme argument ve formátu strint a pokusí se jej rozdělit podle D.
 
-2. ...
+2. Fukce se snaží vyhodnotit hodnotu před D a po D a kontroluje při tom, jestli uživatel zadal správnou hodnotu.
 
-3. ...
+3. Na základně zjištěních hodnot funkce vypočítá výsledek. 

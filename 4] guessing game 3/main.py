@@ -7,7 +7,7 @@ max_num = 1000
 guess = 0
 
 def calculation(minimum=int, maximum=int) -> int:
-    return int((maximum-minimum) / 2) + minimum
+    return (maximum-minimum) // 2 + minimum
 
 
 @app.route("/too_low", methods=["GET", "POST"])
