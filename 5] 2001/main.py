@@ -45,7 +45,7 @@ def dice_calculation(entered_value: str):
 
     # získání případného modifikátoru + kontrola
     if first_cut[1]:
-        correct_mark = ("+", "-", "*", "/")
+        correct_mark = ("+", "-")
         for mark in correct_mark:
             if mark in first_cut[1]:
                 math_mark = mark

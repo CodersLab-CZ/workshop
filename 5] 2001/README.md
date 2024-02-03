@@ -4,7 +4,7 @@ Aplikace pro výpočet hodu kostkou ve formátu xDy+z kde:
 x = počet hodů kostkou (nepovinné)
 D = sympol pro označení druhu kostky (povinné)
 y = označení kolikastěnná je kostka (povinné)
-+z = modifikátor, který označí matematickou operaci, která se má s výsledkem hodu provést - povoleno je +, -, *, / (nepovinné)
++z = modifikátor, který označí matematickou operaci, která se má s výsledkem hodu provést - povoleno je +, - (nepovinné)
 
 
 # Lauched application
