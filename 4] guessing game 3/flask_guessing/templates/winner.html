@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The computer guessed your number.</title>
+</head>
+<body>
+    <h1>The computer guessed your number. It was number {{user_number}}.</h1>
+    <p>Play again?</p>
+    <form method="post" action="{{ url_for('restart_game') }}">
+        <input type="submit" value="Ano">
+    </form>
+</body>
+</html>
