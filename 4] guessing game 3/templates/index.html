@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title>Number Guessing Game</title>
+   </head>
+   <body>
+      <h1>Number Guessing Game</h1>
+      {% if state == "start" %}
+      <p>Think about a number from 0 to 1000 and let me guess it!</p>
+      <form method="post">
+         <input type="hidden" name="min" value={{ min }}>
+         <input type="hidden" name="max" value={{ max }}>
+         <input type="hidden" name="bingo" value=False>
+         <button type="submit" name="start">I'm ready!</button>
+      </form>
+      {% elif state == "guessing" %}
+      <p>Guessing: {{ guess }}</p>
+      <form method="post">
+         <input type="hidden" name="min" value={{ guess }}>
+         <input type="hidden" name="max" value={{ max }}>
+         <input type="hidden" name="bingo" value=False>
+         <button type="submit" name="toosmall">Too small!</button>
+      </form>
+      <form method="post">
+         <input type="hidden" name="min" value={{ min }}>
+         <input type="hidden" name="max" value={{ guess }}>
+         <input type="hidden" name="bingo" value=False>
+         <button type="submit" name="toobig">Too big!</button>
+      </form>
+      <form method="post">
+         <input type="hidden" name="bingo" value="true">
+         <button type="submit" name="bingo">You win!</button>
+      </form>
+      </form>
+      {% elif state == "end" %}
+      <p>I won!</p>
+      </form>
+      <form method="get">
+         <button type="submit" name="bingo">Play again!</button>
+      </form>
+      {% endif %}
+   </body>
+</html>
