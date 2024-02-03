@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guessing game</title>
+</head>
+<body>
+    <form action="/" method="POST">
+        <input type="hidden" name="min" value="{{ min_value }}">
+        <input type="hidden" name="max" value="{{ max_value }}">
+        <p><h1> It is? {{ guess }} </h1></p>
+        <button type="submit" name="too_small">Too small</button>
+        <button type="submit" name="too_big">Too big</button>
+        <button type="submit" name="win">You Win!</button>
+    </form>
+</body>
+</html>
