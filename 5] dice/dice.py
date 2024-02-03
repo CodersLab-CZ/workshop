@@ -48,21 +48,15 @@ def process_input(user: str) -> namedtuple or bool:
     :param user: string given by user
     :return: False if incorrect input or namedtuple with extracted info (number of rolls, type of dice, modifier)
     """
-    pattern = re.compile(r'^([0-9]*)D([0-9]+)(([+/-]?[0-9]+)?)$')
-    correct_dice = (3, 4, 6, 8, 10, 12, 20, 100)
+    pattern = re.compile(r'^([0-9]*)D(3|4|6|8|10|12|20|100)([+-][0-9]+)?$')
     matches = pattern.match(user)
 
     if not matches:
         return False
-    rolls = matches.group(1)  # everything before 'D' means number of rolls
-    dice = matches.group(2)  # type of dice
-    modifier = matches.group(3)  # the rest of the input is the modifier
 
-    rolls = int(rolls) if rolls else 1  # no number of rolls => rolls = 1
-    dice = int(dice)
-    modifier = int(modifier) if modifier else 0  # no modifier => modifier = 0
-    if dice not in correct_dice:
-        return False
+    rolls = int(matches.group(1) or 1)
+    dice = int(matches.group(2))
+    modifier = int(matches.group(3) or 0)
 
     return DiceRoll(rolls, dice, modifier)
 
