@@ -1,32 +1,79 @@
-from random import randint
+from random import sample
+import os
 
-def comparsion(user_number, pc_number):
-    """ The function compare pc_number and user_number and return result of comparsion."""
+def print_fortune(fortune):
+    os.system("clear")
+    for i in range(0, len(fortune), 5):
+        print(*fortune[i:i+5])
 
-    if user_number < pc_number:
-        return "Too small!"
+def select_number():
+    os.system("clear")
+#    fortune = [i for i in range(1,50)]
+    fortune = list(range(1,50))
+    select_numbers = []
+    count = 0
 
-    elif user_number > pc_number:
-       return "Too big!"
+#    while not count == 6:
+    while count < 6:
 
-    return "You win!"
+       print_fortune(fortune)
+       print("")
+       print(f"Your select numbers are:")
+       print(*select_numbers)
+       select = input(f"Select {count + 1}. number out of 6, from 1 to 49: ")
 
-pc_number = randint(1,100)
-print(pc_number)
 
-win=""
-while win !=  "You win!":
-     print(f"Guess the number from 1 to 100.")
-     user_number = input("Guess the number: ")
+       try:
+           select = int(select)
 
-     try:
-         user_number = int(user_number)
+           if 1 <= select <= 49:
+               if select not in select_numbers:
+                   select_numbers.append(fortune.pop(select - 1))
+                   select_numbers.sort()
+                   if (select - 1) >= 8:
+                       fortune.insert(select - 1, "X ")
+                       count += 1
+                   else:
+                       fortune.insert(select - 1, "X")
+                       count += 1
+    
 
-         if not 0 <= user_number <= 101:
-            print(f"It's not a number from 1 to 100!")
-         else:
-            win = comparsion(user_number, pc_number)
-            print(win)     
+       except ValueError:
+           pass
 
-     except ValueError:
-         print(f"It's not a number!")
+    print_fortune(fortune)
+    print("")
+    print(f"Your select numbers are:")
+    print(*select_numbers)
+
+
+    random_indexes = sorted(sample(range(len(fortune)), 6))
+    print("")
+    print("The winning numbers are:")
+    for lucky_numbers in random_indexes:
+        print(lucky_numbers +1, end=" ")
+    print("")
+
+    sum_win_numbers = 0
+    for index in random_indexes:
+        if index <= 9 and fortune[index] == "X":
+            print("X", end=" ")
+            sum_win_numbers += 1        
+
+        if index >= 10 and fortune[index] == "X ":
+            print("X ", end=" ")
+            sum_win_numbers += 1
+
+        if index >= 10 and not fortune[index] == "X ":
+            print("- ", end=" ")
+
+        if index <= 9 and not fortune[index] == "X":
+            print("-", end=" ")
+        
+    print("")
+    if 6 >= sum_win_numbers >=3:
+        return f"**** You won! ***\nYou guessed it.\nThe number of guessed numbers is {sum_win_numbers}"
+
+    return f"Unfortunately, you didn't win.\nThe number of guessed numbers is less than 3.\nThe number of guessed numbers is {sum_win_numbers}."
+
+print(select_number())
