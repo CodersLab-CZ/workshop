@@ -1,7 +1,7 @@
 from random import randint
 
 
-def num_guessing_game():
+def num_guessing_game() -> None:
     """
     The function uses randint() and generates a number in
     the range 1-100. Then it uses "while loop" and it gets
@@ -32,8 +32,9 @@ def num_guessing_game():
         elif player_num > wanted_num:
             print("Too big number...")
             continue
-        else: 
-            return "!!! YOU WIN !!!"
+        else:
+            print("!!! YOU WIN !!!")
+            return
 
 
 
