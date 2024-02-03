@@ -23,16 +23,15 @@
 
         <h2>I guess {{ guess }}, it is right?</h2>
 
-        <form action="/too_low" method="POST">
-            <button type="submit">TOO LOW</button>
+        <form action="/" method="POST">
+            <button type="submit" name="button" value="low">TOO LOW</button>
+            <button type="submit" name="button" value="high">TOO HIGH</button>
+            <button type="submit" name="button" value="win">YOU WIN</button>
+            <input type="hidden" name="guess" value="{{ guess }}">
+            <input type="hidden" name="min" value="{{ min }}">
+            <input type="hidden" name="max" value="{{ max }}">
         </form>
 
-        <form action="/too_high" method="POST">
-            <button type="submit">TOO HIGH</button>
-        </form>
-
-        <form action="/you_win" method="POST">
-            <button type="submit">YOU WIN</button>
         </form>
     </div>
 </body>
