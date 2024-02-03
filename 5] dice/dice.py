@@ -40,7 +40,12 @@ from collections import namedtuple
 DiceRoll = namedtuple('DiceRoll', ['number', 'dice', 'modifier'])
 
 
-def process_input(user: str) -> namedtuple or bool:
+class InvalidInputError(Exception):
+    def __init__(self):
+        super().__init__()
+
+
+def process_input(user: str) -> namedtuple:
     """
     Take user's input and validate its correctness. If it's not correct, return False.
     Using regex expression, extract needed information (number of rolls, type of dice and modifier).
@@ -52,13 +57,13 @@ def process_input(user: str) -> namedtuple or bool:
     matches = pattern.match(user)
 
     if not matches:
-        return False
+        raise InvalidInputError
 
     rolls = int(matches.group(1) or 1)
     dice = int(matches.group(2))
     modifier = int(matches.group(3) or 0)
 
-    return DiceRoll(rolls, dice, modifier)
+    return DiceRoll(number=rolls, dice=dice, modifier=modifier)
 
 
 def calculate_roll(roll: namedtuple) -> int:
@@ -82,13 +87,13 @@ def main():
     :return: None
     """
     while True:
-        user = input("Enter roll in a form xDy+z: ").upper()
-        roll = process_input(user)
-        if not roll:
+        try:
+            user = input("Enter roll in a form xDy+z: ").upper()
+            roll = process_input(user)
+            print(f"\nThe result of a {user} dice roll is: {calculate_roll(roll)}")
+            break
+        except InvalidInputError:
             print("Incorrect input!")
-            continue
-        print(f"\nThe result of a {user} dice roll is: {calculate_roll(roll)}")
-        break
 
 
 if __name__ == '__main__':
