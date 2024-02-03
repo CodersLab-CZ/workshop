@@ -3,19 +3,19 @@ from flask import Flask, request, render_template
 app = Flask(__name__)
 
 
-def calculation(minimum=int, maximum=int) -> int:
+def calculation(mnimum=int, mximum=int) -> int:
     """
     Fukce se základním vzorcem pro výpočet 
     tipu čísla.
     """
-    return (maximum-minimum) // 2 + minimum
+    return (mximum-mnimum) // 2 + mnimum
 
 
 @app.route("/", methods=["GET", "POST"])
 def game():
     """
     Aplikace pro hádání čísla hráče v rozsahu 0-1000.
-    Funkce získá vstupní hodnoty min a max, díky kterým
+    Funkce získá vstupní hodnoty mn a mx, díky kterým
     vypočítává nejpravděpodobnější číslo. Hodnoty jsou na 
     začátku nastavené defaltně a v průběhu hry se upravují
     podle reakce uživatele dokud aplikace nedopočítá správné 
@@ -27,24 +27,24 @@ def game():
     
     # zobrazení hrací stránky 
     elif request.method == "POST":
-        # získání hodnot min/max/guess
-        min = int(request.form.get("min", default=0))
-        max = int(request.form.get("max", default=1000))
+        # získání hodnot mn/mx/guess
+        mn = int(request.form.get("mn", default=0))
+        mx = int(request.form.get("mx", default=1000))
         guess = 0
 
         # úprava hodnot podle vstupu uživatele
         answer = request.form.get("button")
         if answer == "low":
-            min = int(request.form.get("guess"))
-            print(min, max)
-            guess = calculation(min, max)
-            return render_template("guessing.html", guess=guess, min=min, max=max)
+            mn = int(request.form.get("guess"))
+            print(mn, mx)
+            guess = calculation(mn, mx)
+            return render_template("guessing.html", guess=guess, mn=mn, mx=mx)
         
         elif answer == "high":
-            max = int(request.form.get("guess"))
-            print(min, max)
-            guess = calculation(min, max)
-            return render_template("guessing.html", guess=guess, min=min, max=max)
+            mx = int(request.form.get("guess"))
+            print(mn, mx)
+            guess = calculation(mn, mx)
+            return render_template("guessing.html", guess=guess, mn=mn, mx=mx)
         
         # zobrazení výherní stránky
         elif answer == "win":
@@ -52,8 +52,8 @@ def game():
         
         # první zobrazení hrací stránky (bez vstupu uživatele)
         else:
-            guess = calculation(min, max)
-            return render_template("guessing.html", guess=guess, min=min, max=max)  
+            guess = calculation(mn, mx)
+            return render_template("guessing.html", guess=guess, mn=mn, mx=mx)  
 
 
 if __name__ == "__main__":
