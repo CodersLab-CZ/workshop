@@ -20,8 +20,8 @@ for WINDOWS
 
 # Running application
 
-1. Fukce přijme argument ve formátu strint a pokusí se jej rozdělit podle D.
+1. Fukce přijme argument ve formátu strint a zkontroluje, zda byla použita správná kostka. Pokud ne, vrátí chybové hlášení.
 
-2. Fukce se snaží vyhodnotit hodnotu před D a po D a kontroluje při tom, jestli uživatel zadal správnou hodnotu.
+2. Pokud ano, funkce se pokusí získat i další hodnoty. Kontroluje, zda byly zadány správně a pokud ne, vrátí chybové hlášení. 
 
-3. Na základně zjištěních hodnot funkce vypočítá výsledek. 
+3. Na základně zjištěních hodnot funkce vypočítá výsledek a vrátí ho ve formě int.
