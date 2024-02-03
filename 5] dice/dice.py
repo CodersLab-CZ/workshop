@@ -34,6 +34,7 @@ simulate the rolls and return the result.
 Types of dice used in games: D3, D4, D6, D8, D10, D12, D20, D100.
 """
 
+import re
 from random import randint
 from collections import namedtuple
 DiceRoll = namedtuple('DiceRoll', ['number', 'dice', 'modifier'])
@@ -42,36 +43,25 @@ DiceRoll = namedtuple('DiceRoll', ['number', 'dice', 'modifier'])
 def process_input(user: str) -> namedtuple or bool:
     """
     Take user's input and validate its correctness. If it's not correct, return False.
-    Otherwise, find indexes of important chars in the input ('D', '+' or '-') and use them to split the input
-    into parts to extract needed information (number of rolls, type of dice and modifier).
+    Using regex expression, extract needed information (number of rolls, type of dice and modifier).
     Return the result as namedtuple.
     :param user: string given by user
     :return: False if incorrect input or namedtuple with extracted info (number of rolls, type of dice, modifier)
     """
+    pattern = re.compile(r'^([0-9]*)D([0-9]+)(([+/-]?[0-9]+)?)$')
     correct_dice = (3, 4, 6, 8, 10, 12, 20, 100)
-    signs = ('+', '-')
-    d_index = user.find('D')
-    if d_index == -1:  # 'D' is totally missing in the input - incorrect input
+    matches = pattern.match(user)
+
+    if not matches:
         return False
+    rolls = matches.group(1)  # everything before 'D' means number of rolls
+    dice = matches.group(2)  # type of dice
+    modifier = matches.group(3)  # the rest of the input is the modifier
 
-    for sign in signs:  # checking both signs if either one of them is in the input. if so, store the index of the sign.
-        mod_index = user.find(sign)
-        if mod_index != -1:
-            break
-    if mod_index == -1:  # no modifier
-        mod_index = len(user)
-
-    rolls = user[:d_index]  # everything before 'D' means number of rolls
-    dice = user[d_index + 1:mod_index]  # type of dice
-    modifier = user[mod_index:]  # the rest of the input is the modifier
-
-    try:
-        rolls = int(rolls) if rolls else 1  # no number of rolls => rolls = 1
-        dice = int(dice)
-        modifier = int(modifier) if modifier else 0  # no modifier => modifier = 0
-        if dice not in correct_dice:
-            return False
-    except ValueError:
+    rolls = int(rolls) if rolls else 1  # no number of rolls => rolls = 1
+    dice = int(dice)
+    modifier = int(modifier) if modifier else 0  # no modifier => modifier = 0
+    if dice not in correct_dice:
         return False
 
     return DiceRoll(rolls, dice, modifier)

@@ -22,16 +22,21 @@ Write a program that:
 from random import shuffle
 
 
-class InvalidNumberError(Exception):
+class OutOfRangeError(Exception):
     def __init__(self, message):
         super().__init__(message)
 
 
-def get_numbers() -> list[int]:
+class DuplicateNumberError(Exception):
+    def __init__(self, message):
+        super().__init__(message)
+
+
+def get_numbers() -> set[int]:
     """
     Ask user for six numbers. For each number validate its type (int), range (1-49)
     and whether it hasn't been taken before.
-    :return: list of user's numbers
+    :return: set of user's numbers
     """
     n = 0
     numbers = []
@@ -39,26 +44,28 @@ def get_numbers() -> list[int]:
         try:
             number = int(input(f"Enter {n + 1}. number (1 - 49): "))
             if not (1 <= number <= 49):
-                raise InvalidNumberError("The number is out of range! Try again.")
+                raise OutOfRangeError("The number is out of range! Try again.")
             if number in numbers:
-                raise InvalidNumberError("You've already picked that number! Try again.")
+                raise DuplicateNumberError("You've already picked that number! Try again.")
             numbers.append(number)
             n += 1
         except ValueError:
             print("That's not a number! Try again.")
-        except InvalidNumberError as e:
+        except OutOfRangeError as e:
             print(e)
-    return numbers
+        except DuplicateNumberError as e:
+            print(e)
+    return set(numbers)
 
 
-def lotto_picks() -> list[int]:
+def lotto_picks() -> set[int]:
     """
     Pick six unique numbers from given range (1-49)
-    :return: list of six random unique numbers
+    :return: set of six random unique numbers
     """
     numbers = list(range(1, 50))
     shuffle(numbers)
-    return numbers[:6]
+    return set(numbers[:6])
 
 
 def main():
@@ -67,14 +74,11 @@ def main():
     Print both lists in sorted order. Count matching numbers.
     :return: None
     """
-    player = sorted(get_numbers())
-    computer = sorted(lotto_picks())
-    correct = 0
-    for num in player:
-        if num in computer:
-            correct += 1
-    print(f"\nYou have picked these numbers: {' - '.join(map(str, player))}")
-    print(f"Computer picked these numbers: {' - '.join(map(str, computer))}")
+    player = get_numbers()
+    computer = lotto_picks()
+    correct = len(player.intersection(computer))
+    print(f"\nYou have picked these numbers: {' - '.join(map(str, sorted(player)))}")
+    print(f"Computer picked these numbers: {' - '.join(map(str, sorted(computer)))}")
     print(f"You correctly picked {correct} number{'s' if correct != 1 else ''}.")
 
 
