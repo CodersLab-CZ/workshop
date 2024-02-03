@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number Game</title>
+</head>
+<body>
+    <h1>Guess the Number Game</h1>
+    
+    <form method="post" action="{{ url_for('math') }}">
+
+        <p>Your number is: <input type="number" name="user_number" value="{{ user_number }}" readonly></p>
+        <p>AI guess number is: <input type="number" name="ai_number" value="{{ ai_number }}" readonly></p>
+        <br><br>
+        <input type="hidden" name="min_number" value="{{min_number}}">
+        <input type="hidden" name="max_number" value="{{max_number}}">
+        <br><br>
+        <p>AI number is to: </p>
+        <input type="submit" name="action" value="small">
+        <input type="submit" name="action" value="big">
+        <input type="submit" name="action" value="same">
+        <br><br>
+        {% if show_text %}
+            <h1>Don't cheat!</h1>
+        {% endif %}
+        <br><br>
+    </form>
+</body>
+</html>
+
