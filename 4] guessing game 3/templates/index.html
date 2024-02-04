@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="cz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+</head>
+<body>
+    <h1>Hra s čísly</h1>
+    <form method="POST">
+        <p>Je číslo <b>{{ guess }}</b> příliš malé, příliš velké nebo výherní?</p>
+        <input type="hidden" name="min" value="{{ min }}">
+        <input type="hidden" name="max" value="{{ max }}">
+        <button type="submit" name="action" value="Příliš malé">Příliš malé</button>
+        <button type="submit" name="action" value="Příliš velké">Příliš velké</button>
+        <button type="submit" name="action" value="Vyhráváte">Vyhrál jsi!</button>
+    </form>
+</body>
+</html>
