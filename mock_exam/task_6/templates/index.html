@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies</title>
+    <style>
+        .box {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>MOVIE ANALYZER</h1>
+        <form action="/movies" method="POST">
+            <label for="">Enter a name of the movie: 
+                <input name="name_movie">
+            </label>
+            <button type="submit">SEARCH</button>
+        </form>
+
+        <h2>{{ answer }}</h2>
+    </div>
+</body>
+</html>

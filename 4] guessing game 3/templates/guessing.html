@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guessing GAME</title>
+    <style>
+        button {
+            margin: 10px auto;
+            min-width: 150px;
+            min-height: 35px;
+            font-size: 17px;
+        }
+        .box {
+            text-align: center;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>GUESSING GAME</h1>
+
+        <h2>I guess {{ guess }}, it is right?</h2>
+
+        <form action="/" method="POST">
+            <button type="submit" name="button" value="low">TOO LOW</button>
+            <button type="submit" name="button" value="high">TOO HIGH</button>
+            <button type="submit" name="button" value="win">YOU WIN</button>
+            <input type="hidden" name="guess" value="{{ guess }}">
+            <input type="hidden" name="mn" value="{{ mn }}">
+            <input type="hidden" name="mx" value="{{ mx }}">
+        </form>
+
+        </form>
+    </div>
+</body>
+</html>
